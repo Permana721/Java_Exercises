@@ -3,7 +3,7 @@ package _01_Mahasiswa.model;
 public enum IsPaid {
     PAID("Paid"),
     PARTIAL("Partial"),
-    UNPAID("Unpaid");
+    UNPAID("Unpaid"); // bayar wok
 
     private String displayName;
 
