@@ -1,7 +1,7 @@
 package _01_Mahasiswa.model;
 
 public enum Major {
-    INFORMATIKA("Informatika"), // IF coyy
+    INFORMATIKA("Informatika"),
     MANAJEMEN("Manajemen"),
     PSIKOLOGI("Psikologi");
 
