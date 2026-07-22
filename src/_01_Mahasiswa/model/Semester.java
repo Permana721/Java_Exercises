@@ -9,6 +9,7 @@ public enum Semester {
     SEMESTER6("Semester 6"),
     SEMESTER7("Semester 7"),
     SEMESTER8("Semester 8");
+    // semester abadi gak di anggap
 
     private String displayName;
 
