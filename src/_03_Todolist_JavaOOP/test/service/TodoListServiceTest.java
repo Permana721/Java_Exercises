@@ -1,10 +1,10 @@
-package _3_Todolist_JavaOOP.test.service;
+package _03_Todolist_JavaOOP.test.service;
 
-import _3_Todolist_JavaOOP.entity.Todolist;
-import _3_Todolist_JavaOOP.repository.TodoListRepository;
-import _3_Todolist_JavaOOP.repository.TodoListRepositoryImpl;
-import _3_Todolist_JavaOOP.service.TodoListService;
-import _3_Todolist_JavaOOP.service.TodoListServiceImpl;
+import _03_Todolist_JavaOOP.entity.Todolist;
+import _03_Todolist_JavaOOP.repository.TodoListRepository;
+import _03_Todolist_JavaOOP.repository.TodoListRepositoryImpl;
+import _03_Todolist_JavaOOP.service.TodoListService;
+import _03_Todolist_JavaOOP.service.TodoListServiceImpl;
 
 public class TodoListServiceTest {
     static void main(String[] args) {
