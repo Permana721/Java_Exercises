@@ -1,4 +1,4 @@
-package _3_Todolist_JavaOOP.util;
+package _03_Todolist_JavaOOP.util;
 
 import java.util.Scanner;
 
