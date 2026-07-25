@@ -1,4 +1,4 @@
-package _3_Todolist_JavaOOP.entity;
+package _03_Todolist_JavaOOP.entity;
 
 public class Todolist {
     private String todo;
