@@ -1,7 +1,7 @@
-package _3_Todolist_JavaOOP.view;
+package _03_Todolist_JavaOOP.view;
 
-import _3_Todolist_JavaOOP.service.TodoListService;
-import _3_Todolist_JavaOOP.util.InputUtil;
+import _03_Todolist_JavaOOP.service.TodoListService;
+import _03_Todolist_JavaOOP.util.InputUtil;
 
 public class TodoListView {
     private TodoListService todoListService;
