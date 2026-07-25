@@ -1,7 +1,7 @@
-package _3_Todolist_JavaOOP.service;
+package _03_Todolist_JavaOOP.service;
 
-import _3_Todolist_JavaOOP.entity.Todolist;
-import _3_Todolist_JavaOOP.repository.TodoListRepository;
+import _03_Todolist_JavaOOP.entity.Todolist;
+import _03_Todolist_JavaOOP.repository.TodoListRepository;
 
 public class TodoListServiceImpl implements TodoListService {
     private TodoListRepository todoListRepository;
