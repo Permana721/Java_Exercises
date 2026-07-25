@@ -1,4 +1,4 @@
-package _3_Todolist_JavaOOP.service;
+package _03_Todolist_JavaOOP.service;
 
 public interface TodoListService {
     void showTodoList();
