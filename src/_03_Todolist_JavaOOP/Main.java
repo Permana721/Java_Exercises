@@ -1,10 +1,10 @@
-package _3_Todolist_JavaOOP;
+package _03_Todolist_JavaOOP;
 
-import _3_Todolist_JavaOOP.repository.TodoListRepository;
-import _3_Todolist_JavaOOP.repository.TodoListRepositoryImpl;
-import _3_Todolist_JavaOOP.service.TodoListService;
-import _3_Todolist_JavaOOP.service.TodoListServiceImpl;
-import _3_Todolist_JavaOOP.view.TodoListView;
+import _03_Todolist_JavaOOP.repository.TodoListRepository;
+import _03_Todolist_JavaOOP.repository.TodoListRepositoryImpl;
+import _03_Todolist_JavaOOP.service.TodoListService;
+import _03_Todolist_JavaOOP.service.TodoListServiceImpl;
+import _03_Todolist_JavaOOP.view.TodoListView;
 
 public class Main {
     static void main(String[] args) {
