@@ -1,4 +1,5 @@
 package _04_ECommerce.entity;
 
-public class User {
+public abstract class User {
+
 }
