@@ -1,6 +1,6 @@
-package _3_Todolist_JavaOOP.repository;
+package _03_Todolist_JavaOOP.repository;
 
-import _3_Todolist_JavaOOP.entity.Todolist;
+import _03_Todolist_JavaOOP.entity.Todolist;
 
 public class TodoListRepositoryImpl implements TodoListRepository {
     public Todolist[] data = new Todolist[10];
