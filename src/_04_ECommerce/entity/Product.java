@@ -2,20 +2,21 @@ package _04_ECommerce.entity;
 import java.util.Locale;
 
 public class Product {
-    private int counter = 0;
-    private String id = "PRD-";
+    private static int counter = 0;
+    private static final String PREFIX = "PRD-";
+    private String id;
     private String name;
     private Category category;
     private double price;
     private String decimalFormat;
 
-    public synchronized String addId(){
+    public static synchronized String generateId(){
         counter++;
-        return this.id + counter;
+        return PREFIX + counter;
     }
 
     public Product(String name, Category category, double price) {
-        this.id = addId();
+        this.id = generateId();
         this.name = name;
         this.category = category;
         this.price = price;
@@ -30,14 +31,8 @@ public class Product {
         return name;
     }
 
-
     public Category getCategory() {
         return category;
-    }
-
-
-    public double getPrice() {
-        return price;
     }
 
     public String getDecimalFormat() {
@@ -47,8 +42,9 @@ public class Product {
     public void getDetailProduct(){
         System.out.println("Id Product: " + getId());
         System.out.println("Name Product: " + getName());
-        System.out.println("Category Product: " + getCategory());
+        System.out.println("Category Product: " + getCategory().displayName);
         System.out.println("Price Product: " + getDecimalFormat());
+        System.out.println("\n");
     }
 
 }
