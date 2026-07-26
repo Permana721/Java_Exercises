@@ -2,7 +2,10 @@ package _04_ECommerce.service;
 
 import _04_ECommerce.entity.Product;
 
+import java.util.List;
+
 public interface ProductService {
-    Product add(Product product);
-    Product findById(String id);
+    Product add(Product product);;
+    Product selectProduct(String id);
+    List<Product> findAll();
 }
