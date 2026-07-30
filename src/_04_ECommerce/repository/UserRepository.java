@@ -7,5 +7,6 @@ import java.util.List;
 public interface UserRepository {
     User save(User user);
     User findById(String id);
+    boolean login(String name, String password);
     List<User> findAll();
 }
