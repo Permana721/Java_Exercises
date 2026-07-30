@@ -1,5 +1,7 @@
 package _04_ECommerce.entity;
 
+import java.util.List;
+
 public class CartItem {
     private Product product;
     private int quantity;
