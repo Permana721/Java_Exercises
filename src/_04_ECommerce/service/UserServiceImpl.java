@@ -5,6 +5,7 @@ import _04_ECommerce.exception.UserNotFoundException;
 import _04_ECommerce.repository.UserRepository;
 
 import java.util.List;
+import java.util.Objects;
 
 public class UserServiceImpl implements UserService {
     UserRepository users;
@@ -26,6 +27,15 @@ public class UserServiceImpl implements UserService {
         } else {
             throw new UserNotFoundException("User with Id: " + id + " not found!");
         }
+    }
+
+    @Override
+    public boolean login(String name, String password) {
+        boolean user = users.login(name, password);
+        if (user == true) {
+            return true;
+        }
+        return false;
     }
 
     @Override
