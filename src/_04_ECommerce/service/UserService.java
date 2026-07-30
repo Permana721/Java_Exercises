@@ -7,5 +7,6 @@ import java.util.List;
 public interface UserService {
     User createUser(User user);
     User selectUser(String id);
+    boolean login(String name, String password);
     List<User> selectAll();
 }
