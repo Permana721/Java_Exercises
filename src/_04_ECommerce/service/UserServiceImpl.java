@@ -30,12 +30,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean login(String name, String password) {
-        boolean user = users.login(name, password);
-        if (user == true) {
-            return true;
+    public User login(String name, String password) {
+        User user = users.login(name, password);
+        if (user != null) {
+            System.out.println("Berhasil Login!");
+            return user;
         }
-        return false;
+        return null;
+    }
+
+    @Override
+    public void topup(User user, double saldo) {
+        user.deposit(saldo);
     }
 
     @Override
