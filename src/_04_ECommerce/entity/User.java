@@ -8,6 +8,7 @@ public class User {
     private String id;
     private String name;
     private String password;
+    private double saldo;
     private Cart cart;
     private Order order;
     private UserRole userRole;
@@ -48,6 +49,10 @@ public class User {
         return order;
     }
 
+    public double getSaldo() {
+        return saldo;
+    }
+
     public UserRole getUserRole() {
         return userRole;
     }
@@ -56,9 +61,18 @@ public class User {
         System.out.println("\nUser Id: " + getId());
         System.out.println("User name: " + getName());
         System.out.println("User password: " + getPassword());
+        System.out.println("User saldo: " + getSaldo());
 //        System.out.println("User cart: " + getCart());
 //        System.out.println("User Order: " + getOrder());
         System.out.println("User Role: " + getUserRole());
         System.out.println("\n");
+    }
+
+    public void deposit(double saldo) {
+        this.saldo += saldo;
+    }
+
+    public void withdraw(double saldo) {
+        this.saldo -= saldo;
     }
 }
