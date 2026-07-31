@@ -15,7 +15,9 @@ public class TestUser {
     static void main(String[] args) {
         UserRepository userRepository = new UserRepositoryImpl();
         UserService userService = new UserServiceImpl(userRepository);
-        MainMenuView mainMenuView = new MainMenuView(userService);
+        ProductRepositoryImpl productRepository = new ProductRepositoryImpl();
+        ProductServiceImpl productService = new ProductServiceImpl(productRepository);
+        MainMenuView mainMenuView = new MainMenuView(userService, productService);
 
         mainMenuView.showMainMenu();
     }
