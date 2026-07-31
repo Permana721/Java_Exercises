@@ -1,5 +1,8 @@
 package _04_ECommerce.entity;
+import _04_ECommerce.exception.UserNotNullException;
+
 import java.util.Locale;
+import java.util.Objects;
 
 public class Product {
     private static int counter = 0;
@@ -45,13 +48,35 @@ public class Product {
         return stock;
     }
 
+    public void setName(String name) {
+        if (Objects.isNull(name)){
+            throw new UserNotNullException("User cannot set to be NULL!");
+        } else {
+            this.name = name;
+            System.out.println("Nama produk berhasil di ubah menjadi " + name);
+        }
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
     public void getDetailProduct(){
+        System.out.println("\n=======================================");
         System.out.println("Id Product: " + getId());
         System.out.println("Name Product: " + getName());
         System.out.println("Category Product: " + getCategory().displayName);
         System.out.println("Price Product: " + getDecimalFormat());
         System.out.println("Stock Product: " + getStock());
-        System.out.println("\n");
+        System.out.println("=======================================");
     }
 
     public void increaseStock(int stock){
