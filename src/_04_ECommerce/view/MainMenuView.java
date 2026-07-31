@@ -2,14 +2,17 @@ package _04_ECommerce.view;
 
 import _04_ECommerce.entity.User;
 import _04_ECommerce.entity.UserRole;
+import _04_ECommerce.service.ProductService;
 import _04_ECommerce.service.UserService;
 import _04_ECommerce.util.InputUtil;
 
 public class MainMenuView {
     private UserService userService;
+    private ProductService productService;
 
-    public MainMenuView(UserService userService) {
+    public MainMenuView(UserService userService, ProductService productService) {
         this.userService = userService;
+        this.productService = productService;
     }
 
     public void showMainMenu(){
@@ -61,7 +64,7 @@ public class MainMenuView {
 
         User currentUser = userService.login(nama, password);
         if (currentUser.getUserRole().equals(UserRole.ADMIN)){
-            AdminView adminView = new AdminView();
+            AdminView adminView = new AdminView(productService);
             adminView.showMenu();
         } else {
             CustomerView customerView = new CustomerView();
