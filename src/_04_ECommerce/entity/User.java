@@ -58,6 +58,7 @@ public class User {
     }
 
     public void getDetailUser(){
+        System.out.println("\n====================================");
         System.out.println("\nUser Id: " + getId());
         System.out.println("User name: " + getName());
         System.out.println("User password: " + getPassword());
@@ -65,7 +66,7 @@ public class User {
 //        System.out.println("User cart: " + getCart());
 //        System.out.println("User Order: " + getOrder());
         System.out.println("User Role: " + getUserRole());
-        System.out.println("\n");
+        System.out.println("====================================");
     }
 
     public void deposit(double saldo) {
