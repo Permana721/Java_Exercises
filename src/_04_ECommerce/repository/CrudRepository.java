@@ -1,5 +1,0 @@
-package _04_ECommerce.repository;
-
-public interface CrudRepository<T, ID> {
-
-}
