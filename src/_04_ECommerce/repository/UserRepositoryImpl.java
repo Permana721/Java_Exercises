@@ -32,15 +32,15 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public boolean login(String name, String password) {
+    public User login(String name, String password) {
         for (User user : users){
             if (user.getName().equals(name) && user.getPassword().equals(password)){
-                return true;
+                return user;
             } else {
                 throw new UserNotFoundException("Wrong Password or Username!");
             }
         }
-        return false;
+        return null;
     }
 
     @Override
