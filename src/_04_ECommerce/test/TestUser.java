@@ -9,19 +9,14 @@ import _04_ECommerce.service.ProductService;
 import _04_ECommerce.service.ProductServiceImpl;
 import _04_ECommerce.service.UserService;
 import _04_ECommerce.service.UserServiceImpl;
+import _04_ECommerce.view.MainMenuView;
 
 public class TestUser {
     static void main(String[] args) {
         UserRepository userRepository = new UserRepositoryImpl();
         UserService userService = new UserServiceImpl(userRepository);
+        MainMenuView mainMenuView = new MainMenuView(userService);
 
-        User user = new User("Permana", "123" ,UserRole.USER);
-        User user1 = new User("Arido", "333" ,UserRole.ADMIN);
-
-
-        userService.createUser(user);
-        userService.createUser(user1);
-        userService.selectAll();
-        System.out.println(userService.login("Permana", "123"));
+        mainMenuView.showMainMenu();
     }
 }
