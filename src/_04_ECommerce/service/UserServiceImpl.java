@@ -16,6 +16,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User createUser(User user) {
+        System.out.println("User dengan nama: " + user.getName() + " Berhasil dibuat!");
         return users.save(user);
     }
 
@@ -51,6 +52,7 @@ public class UserServiceImpl implements UserService {
         for (User user : users1){
             user.getDetailUser();
         }
-        return null;
+
+        return users1;
     }
 }
