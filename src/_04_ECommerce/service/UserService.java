@@ -7,6 +7,7 @@ import java.util.List;
 public interface UserService {
     User createUser(User user);
     User selectUser(String id);
-    boolean login(String name, String password);
+    User login(String name, String password);
+    void topup(User user, double saldo);
     List<User> selectAll();
 }
