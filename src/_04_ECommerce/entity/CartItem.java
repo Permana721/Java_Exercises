@@ -1,7 +1,5 @@
 package _04_ECommerce.entity;
 
-import java.util.List;
-
 public class CartItem {
     private Product product;
     private int quantity;
@@ -15,15 +13,15 @@ public class CartItem {
         return product;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
-    }
-
     public int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void increaseQuantity(int quantity) {
+        if (product.getStock() < quantity) {
+            System.out.println("Stok produk habis! hanya dapat membeli " + (product.getStock() - quantity) + " saja");
+        } else {
+            this.quantity += quantity;
+        }
     }
 }
