@@ -31,7 +31,6 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product deleteProduct(String id) {
-        Product product = products.findById(id);
         if (Objects.isNull(id)){
             throw new ProductNotFoundException("User with id " + id + " not found!");
         } else {
@@ -41,12 +40,6 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Product> findAll() {
-        List<Product> products1 =  products.findAll();
-
-        for (Product product : products1) {
-            product.getDetailProduct();
-        }
-
-        return products1;
+        return products.findAll();
     }
 }
