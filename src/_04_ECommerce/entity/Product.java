@@ -1,5 +1,6 @@
 package _04_ECommerce.entity;
-import _04_ECommerce.exception.UserNotNullException;
+
+import _04_ECommerce.exception.UserNotFoundException;
 
 import java.util.Locale;
 import java.util.Objects;
@@ -50,7 +51,7 @@ public class Product {
 
     public void setName(String name) {
         if (Objects.isNull(name)){
-            throw new UserNotNullException("User cannot set to be NULL!");
+            throw new UserNotFoundException("User cannot set to be NULL!");
         } else {
             this.name = name;
             System.out.println("Nama produk berhasil di ubah menjadi " + name);
