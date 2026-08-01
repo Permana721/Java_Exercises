@@ -18,22 +18,25 @@ public class Cart {
 
     public boolean addProduct(Product product, int qty) {
         if (qty <= 0) {
-            throw new ProductNotFoundException("Tidak boleh membeli kurang dari 0!");
+            throw new IllegalArgumentException("Jumlah pembelian harus lebih dari 0!");
         }
         for (CartItem cartItem : cartItems) {
             if (cartItem.getProduct().equals(product)){
+                int totalQuantity = qty + cartItem.getQuantity();
+                if (product.getStock() < totalQuantity){
+                    return false;
+                }
                 cartItem.increaseQuantity(qty);
                 return true;
             }
         }
-        CartItem newCartItem = new CartItem(product, qty);
         if (product.getStock() < qty){
-            System.out.println("Stok hanya tersedia " + product.getStock() + " saja");
+            return false;
         } else {
+            CartItem newCartItem = new CartItem(product, qty);
             cartItems.add(newCartItem);
             return true;
         }
-        return false;
     }
 
     public void removeProduct(String productId) {
@@ -47,9 +50,4 @@ public class Cart {
     public void calculateTotal(){
 
     }
-
-    public void isEmpty() {
-
-    }
-
 }
