@@ -24,11 +24,9 @@ public class UserRepositoryImpl implements UserRepository {
         for (User user : users){
             if (user.getId().equals(id)){
                 return user;
-            } else {
-                throw new UserNotFoundException("User with Id: " + id + " not found!");
             }
         }
-        return null;
+        throw new UserNotFoundException("User with Id " + id + " not found!");
     }
 
     @Override
@@ -36,11 +34,9 @@ public class UserRepositoryImpl implements UserRepository {
         for (User user : users){
             if (user.getName().equals(name) && user.getPassword().equals(password)){
                 return user;
-            } else {
-                throw new UserNotFoundException("Wrong Password or Username!");
             }
         }
-        return null;
+        throw new UserNotFoundException("Wrong name or password!");
     }
 
     @Override
