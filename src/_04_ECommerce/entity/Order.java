@@ -14,4 +14,16 @@ public class Order {
     public void setCart(Cart cart) {
         this.cart = cart;
     }
+
+    public void addOrderItem() {
+
+    }
+
+    public void calculateTotal() {
+
+    }
+
+    public void getOrderItems(){
+
+    }
 }
