@@ -1,6 +1,7 @@
 package _04_ECommerce.entity;
 
 import java.util.List;
+import java.util.Locale;
 
 public class User {
     private static int counter = 0;
@@ -12,6 +13,7 @@ public class User {
     private Cart cart;
     private Order order;
     private UserRole userRole;
+    private String decimalFormat;
 
     public static synchronized String generateId() {
         counter++;
@@ -23,6 +25,7 @@ public class User {
         this.name = name;
         this.password = password;
         this.userRole = userRole;
+        this.cart = new Cart();
     }
 
     public String getId() {
@@ -53,27 +56,33 @@ public class User {
         return saldo;
     }
 
+    public String getDecimalFormat() {
+        return decimalFormat;
+    }
+
     public UserRole getUserRole() {
         return userRole;
     }
 
     public void getDetailUser(){
         System.out.println("\n====================================");
-        System.out.println("\nUser Id: " + getId());
+        System.out.println("User Id: " + getId());
         System.out.println("User name: " + getName());
         System.out.println("User password: " + getPassword());
-        System.out.println("User saldo: " + getSaldo());
+        System.out.println("User saldo: " + getDecimalFormat());
 //        System.out.println("User cart: " + getCart());
 //        System.out.println("User Order: " + getOrder());
         System.out.println("User Role: " + getUserRole());
-        System.out.println("====================================");
+        System.out.println("====================================\n");
     }
 
     public void deposit(double saldo) {
         this.saldo += saldo;
+        this.decimalFormat = String.format(Locale.US, "%,.0f", getSaldo());
     }
 
     public void withdraw(double saldo) {
         this.saldo -= saldo;
+        this.decimalFormat = String.format(Locale.US, "%,.0f", getSaldo());
     }
 }
