@@ -1,6 +1,7 @@
 package _04_ECommerce.service;
 
 import _04_ECommerce.entity.User;
+import _04_ECommerce.exception.UserAlreadyExistsException;
 import _04_ECommerce.exception.UserNotFoundException;
 import _04_ECommerce.repository.UserRepository;
 
@@ -16,7 +17,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User createUser(User user) {
-        System.out.println("User dengan nama: " + user.getName() + " Berhasil dibuat!");
+        List<User> exitingUser = users.findAll();
+
+        for (User users : exitingUser) {
+            if (users.getName().equalsIgnoreCase(user.getName())) {
+                throw new UserAlreadyExistsException("User dengan nama " + user.getName() + " sudah ada!");
+            }
+        }
         return users.save(user);
     }
 
@@ -47,12 +54,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> selectAll() {
-        List<User> users1 = users.findAll();
-
-        for (User user : users1){
-            user.getDetailUser();
-        }
-
-        return users1;
+        return users.findAll();
     }
 }
