@@ -26,6 +26,7 @@ public class User {
         this.password = password;
         this.userRole = userRole;
         this.cart = new Cart();
+        this.order = new Order();
     }
 
     public String getId() {
@@ -70,8 +71,9 @@ public class User {
         System.out.println("User name: " + getName());
         System.out.println("User password: " + getPassword());
         System.out.println("User saldo: " + getDecimalFormat());
-//        System.out.println("User cart: " + getCart());
-//        System.out.println("User Order: " + getOrder());
+        System.out.println("User cart: " + getCart().getCartItems().toString());
+        System.out.print("User Order: " );
+        getOrder().showDetail();
         System.out.println("User Role: " + getUserRole());
         System.out.println("====================================\n");
     }
