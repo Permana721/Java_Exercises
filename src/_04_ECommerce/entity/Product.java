@@ -49,6 +49,10 @@ public class Product {
         return stock;
     }
 
+    public double getPrice() {
+        return price;
+    }
+
     public void setName(String name) {
         if (Objects.isNull(name)){
             throw new UserNotFoundException("User cannot set to be NULL!");
