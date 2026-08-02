@@ -81,7 +81,7 @@ public class CustomerView {
             System.out.println("Keranjang masih kosong!");
         }
         for (CartItem cartItem : carts) {
-            cartItem.getProduct().getDetailProduct();
+            cartItem.showCartItem();
         }
     }
 }
