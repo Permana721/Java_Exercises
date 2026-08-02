@@ -13,15 +13,20 @@ public class OrderItem {
         return product;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
-    }
-
     public int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public double getSubtotal() {
+        return product.getPrice() * quantity;
+    }
+
+    public void printDetail() {
+        System.out.println("=============RINCIAN PEMBELIAN=============");
+        System.out.println("Nama: " + product.getName());
+        System.out.println("Harga: " + product.getDecimalFormat());
+        System.out.println("Qty: " + quantity);
+        System.out.println("Subtotal: Rp." + getSubtotal());
+        System.out.println("===========================================");
     }
 }
