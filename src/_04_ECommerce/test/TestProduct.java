@@ -5,10 +5,7 @@ import _04_ECommerce.repository.ProductRepository;
 import _04_ECommerce.repository.ProductRepositoryImpl;
 import _04_ECommerce.repository.UserRepository;
 import _04_ECommerce.repository.UserRepositoryImpl;
-import _04_ECommerce.service.ProductService;
-import _04_ECommerce.service.ProductServiceImpl;
-import _04_ECommerce.service.UserService;
-import _04_ECommerce.service.UserServiceImpl;
+import _04_ECommerce.service.*;
 
 import java.util.List;
 
@@ -45,5 +42,7 @@ public class TestProduct {
         for (CartItem cartItem : carts) {
             cartItem.showCartItem();
         }
+        OrderService orderService = new OrderServiceImpl();
+        orderService.checkout(currentUser);
     }
 }
