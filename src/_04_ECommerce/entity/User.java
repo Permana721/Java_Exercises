@@ -85,4 +85,11 @@ public class User {
         this.saldo -= saldo;
         this.decimalFormat = String.format(Locale.US, "%,.0f", getSaldo());
     }
+
+    public boolean isEmpty() {
+        if (this.cart == null) {
+            return false;
+        }
+        return true;
+    }
 }
