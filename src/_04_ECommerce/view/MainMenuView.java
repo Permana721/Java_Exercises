@@ -3,6 +3,7 @@ package _04_ECommerce.view;
 import _04_ECommerce.entity.User;
 import _04_ECommerce.entity.UserRole;
 import _04_ECommerce.exception.UserAlreadyExistsException;
+import _04_ECommerce.service.OrderService;
 import _04_ECommerce.service.ProductService;
 import _04_ECommerce.service.UserService;
 import _04_ECommerce.util.InputUtil;
@@ -10,10 +11,12 @@ import _04_ECommerce.util.InputUtil;
 public class MainMenuView {
     private UserService userService;
     private ProductService productService;
+    private OrderService orderService;
 
-    public MainMenuView(UserService userService, ProductService productService) {
+    public MainMenuView(UserService userService, ProductService productService, OrderService orderService) {
         this.userService = userService;
         this.productService = productService;
+        this.orderService = orderService;
     }
 
     public void showMainMenu(){
@@ -77,7 +80,7 @@ public class MainMenuView {
                 AdminView adminView = new AdminView(productService, userService);
                 adminView.showMenu();
             } else {
-                CustomerView customerView = new CustomerView(userService, productService, currentUser);
+                CustomerView customerView = new CustomerView(userService, productService, orderService, currentUser);
                 customerView.showMenu();
             }
         }
