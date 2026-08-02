@@ -47,7 +47,11 @@ public class Cart {
         cartItems.clear();
     }
 
-    public void calculateTotal(){
-
+    public double calculateTotal(){
+        double total = 0;
+        for (CartItem cartItem : cartItems){
+            total += cartItem.getSubtotal();
+        }
+        return total;
     }
 }
