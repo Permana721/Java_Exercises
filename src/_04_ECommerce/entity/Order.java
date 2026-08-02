@@ -1,32 +1,31 @@
 package _04_ECommerce.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
-    private Cart cart;
+    private int id;
+    private double total = 0;
     private List<OrderItem> orderItems;
 
-    public Order(Cart cart) {
-        this.cart = cart;
+    public Order() {
+        this.orderItems = new ArrayList<>();
     }
 
-    public Cart getCart() {
-        return cart;
+    public void addOrderItem(OrderItem orderItem) {
+        orderItems.add(orderItem);
     }
 
-    public void setCart(Cart cart) {
-        this.cart = cart;
+    public double calculateTotal() {
+        for (OrderItem orderItem : orderItems) {
+            total += orderItem.getSubtotal();
+        }
+        return total;
     }
 
-    public void addOrderItem() {
-
-    }
-
-    public void calculateTotal() {
-
-    }
-
-    public void getOrderItems(){
-
+    public void showDetail() {
+        for (OrderItem orderItem : orderItems) {
+            orderItem.printDetail();
+        }
     }
 }
