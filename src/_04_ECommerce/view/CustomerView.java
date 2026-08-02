@@ -4,6 +4,9 @@ import _04_ECommerce.entity.Cart;
 import _04_ECommerce.entity.CartItem;
 import _04_ECommerce.entity.Product;
 import _04_ECommerce.entity.User;
+import _04_ECommerce.exception.PaymentFailedException;
+import _04_ECommerce.service.OrderService;
+import _04_ECommerce.service.OrderServiceImpl;
 import _04_ECommerce.service.ProductService;
 import _04_ECommerce.service.UserService;
 import _04_ECommerce.util.InputUtil;
@@ -14,11 +17,13 @@ public class CustomerView {
     private final UserService userService;
     private final ProductService productService;
     private final User user;
+    private OrderService orderService;
 
-    public CustomerView(UserService userService, ProductService productService, User user) {
+    public CustomerView(UserService userService, ProductService productService, OrderService orderService, User user) {
         this.userService = userService;
         this.productService = productService;
         this.user = user;
+        this.orderService = orderService;
     }
 
     public void showMenu(){
@@ -40,7 +45,7 @@ public class CustomerView {
                 case "2" -> user.getDetailUser();
                 case "3" -> showAllProduct();
                 case "4" -> showCart();
-                case "5" -> {}
+                case "5" -> checkout();
                 case "0" -> {
                     return;
                 }
@@ -82,6 +87,14 @@ public class CustomerView {
         }
         for (CartItem cartItem : carts) {
             cartItem.showCartItem();
+        }
+    }
+
+    public void checkout() {
+        try {
+            orderService.checkout(user);
+        } catch (PaymentFailedException e) {
+            System.out.println(e);
         }
     }
 }
