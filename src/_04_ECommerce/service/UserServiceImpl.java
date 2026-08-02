@@ -6,7 +6,6 @@ import _04_ECommerce.exception.UserNotFoundException;
 import _04_ECommerce.repository.UserRepository;
 
 import java.util.List;
-import java.util.Objects;
 
 public class UserServiceImpl implements UserService {
     UserRepository users;
