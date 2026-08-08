@@ -2,6 +2,7 @@ package _04_ECommerce.entity;
 
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 
 public class User {
     private static int counter = 0;
@@ -18,6 +19,11 @@ public class User {
     public static synchronized String generateId() {
         counter++;
         return PREFIX + counter;
+    }
+
+    public String generateDecimalFormat(double amount) {
+        this.decimalFormat = String.format(Locale.US, "%,.0f", amount);
+        return decimalFormat;
     }
 
     public User(String name, String password, UserRole userRole) {
@@ -70,28 +76,50 @@ public class User {
         System.out.println("User Id: " + getId());
         System.out.println("User name: " + getName());
         System.out.println("User password: " + getPassword());
-        System.out.println("User saldo: " + getDecimalFormat());
-        System.out.println("User cart: " + getCart().getCartItems().toString());
-        System.out.print("User Order: " );
-        getOrder().showDetail();
-        System.out.println("User Role: " + getUserRole());
+        if (decimalFormat == null) {
+            System.out.println("User saldo: Rp. 0");
+        } else {
+            System.out.println("User saldo: " + getDecimalFormat());
+        }
+        System.out.print("User cart: " );
+        getCartItems();
+        System.out.print("\nUser Order: ");
+        getOrderItems();
+        System.out.println("\nUser Role: " + getUserRole());
         System.out.println("====================================\n");
     }
 
     public void deposit(double saldo) {
         this.saldo += saldo;
-        this.decimalFormat = String.format(Locale.US, "%,.0f", getSaldo());
+        generateDecimalFormat(saldo);
     }
 
     public void withdraw(double saldo) {
         this.saldo -= saldo;
-        this.decimalFormat = String.format(Locale.US, "%,.0f", getSaldo());
+        generateDecimalFormat(saldo);
     }
 
-    public boolean isEmpty() {
-        if (this.cart == null) {
-            return false;
+    public void getCartItems() {
+        List<CartItem> cartItems = getCart().getCartItems();
+
+        if (cartItems.isEmpty()) {
+            System.out.println("Anda belum memasukan barang ke dalam keranjang belanja!");
+        } else {
+            for (CartItem cartItem : cartItems) {
+                cartItem.showCartItem();
+            }
         }
-        return true;
+    }
+
+    public void getOrderItems() {
+        List<OrderItem> orderItems = getOrder().getOrderItems();
+
+        if (orderItems.isEmpty()) {
+            System.out.println("Anda belum memesan barang apapun!");
+        } else {
+            for (OrderItem orderItem : orderItems) {
+                orderItem.printDetail();
+            }
+        }
     }
 }
