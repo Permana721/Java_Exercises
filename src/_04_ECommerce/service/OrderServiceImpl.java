@@ -31,9 +31,13 @@ public class OrderServiceImpl implements OrderService {
                 order.addOrderItem(orderItem);
                 orderItem.getProduct().decreaseStock(cartItem.getQuantity());
             }
+            System.out.print("Sudah berhasil membeli: ");
+            for (CartItem cartItem : cartItems) {
+                cartItem.showCartItem();
+            }
             user.withdraw(total);
             user.getCart().clear();
-            user.getDetailUser();
+            System.out.print("Sekarang saldo anda telah berkurang menjadi Rp. " + user.generateDecimalFormat(user.getSaldo()) + "\n");
         } else {
             throw new PaymentFailedException("Saldo anda tidak cukup!");
         }
