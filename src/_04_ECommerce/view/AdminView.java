@@ -30,7 +30,7 @@ public class AdminView {
             System.out.println("3. Hapus Produk");
             System.out.println("4. Lihat semua produk");
             System.out.println("5. Lihat semua user");
-            System.out.println("0. Kembali");
+            System.out.println("0. Logout");
 
             String input = InputUtil.input("Pilih: ");
 
@@ -84,7 +84,10 @@ public class AdminView {
         }
 
         Product newProduct = new Product(name, Double.parseDouble(price), category, Integer.parseInt(stock));
-        productService.add(newProduct);
+        Product valid = productService.add(newProduct);
+        if (Objects.nonNull(valid)) {
+            System.out.println("Berhasil menambahkan product: " + newProduct.getName());
+        }
     }
 
     public void editProduct() {
