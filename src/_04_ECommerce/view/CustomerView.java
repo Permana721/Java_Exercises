@@ -60,7 +60,7 @@ public class CustomerView {
             System.out.println("Tolong masukan jumlah yang valid!");
         } else {
             userService.topup(user, Double.parseDouble(amount));
-            System.out.println("Topup Berhasil! saldo bertambah Rp. " + amount);
+            System.out.print("Topup Berhasil! saldo bertambah Rp. " + user.generateDecimalFormat(Double.parseDouble(amount)) + "\n");
         }
     }
 
