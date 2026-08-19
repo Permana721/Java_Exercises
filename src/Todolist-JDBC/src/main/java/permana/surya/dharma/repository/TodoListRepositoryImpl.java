@@ -1,4 +1,4 @@
 package permana.surya.dharma.repository;
 
-public class TodoListRepositoryImpl {
+public class TodoListRepositoryImpl implements TodoListRepository {
 }
