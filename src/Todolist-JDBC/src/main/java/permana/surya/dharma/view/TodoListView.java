@@ -11,17 +11,11 @@ public class TodoListView {
 
     public TodoListView(TodoListService todoListService) {
         this.todoListService = todoListService;
-        todolistList = todoListService.findAll();
     }
-
-    List<Todolist> todolistList;
-
 
     public void showTodoList(){
         while (true) {
-            for (Todolist todo : todolistList) {
-                System.out.println(todo.getId() + ". " + todo.getTodo());
-            }
+            todoListService.findAll();
 
             System.out.println("MENU: ");
             System.out.println("1. Tambah");
