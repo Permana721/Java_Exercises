@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface TodoListService {
     Todolist addTodoList(Todolist todo);
-    Todolist removeTodoList(Integer id);
-    List<Todolist> findAll();
+    boolean removeTodoList(Integer id);
+    void findAll();
 }
