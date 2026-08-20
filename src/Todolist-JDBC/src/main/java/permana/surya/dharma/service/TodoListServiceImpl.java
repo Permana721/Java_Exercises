@@ -19,7 +19,7 @@ public class TodoListServiceImpl implements TodoListService {
     }
 
     @Override
-    public Todolist removeTodoList(Integer id) {
+    public boolean removeTodoList(Integer id) {
         if (Objects.isNull(id)) {
             throw new NullPointerException("Todolist " + id + " not found!");
         } else {
@@ -28,7 +28,10 @@ public class TodoListServiceImpl implements TodoListService {
     }
 
     @Override
-    public List<Todolist> findAll() {
-        return todoListRepository.findAll();
+    public void findAll() {
+        List<Todolist> todolists = todoListRepository.findAll();
+        for (Todolist todolist : todolists) {
+            System.out.println(todolist.getId() + ". " + todolist.getTodo());
+        }
     }
 }
