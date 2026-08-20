@@ -5,6 +5,10 @@ public class Todolist {
     private Integer id;
     private static int counter = 1;
 
+    public Todolist() {
+        setId(increaseID());
+    }
+
     public Todolist(String todo) {
         this.todo = todo;
         setId(increaseID());
