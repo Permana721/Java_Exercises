@@ -4,9 +4,8 @@ import permana.surya.dharma.entity.Todolist;
 
 import javax.sql.DataSource;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.List;
+import java.util.*;
+import java.util.stream.StreamSupport;
 
 public class TodoListRepositoryImpl implements TodoListRepository {
     private DataSource dataSource;
@@ -20,24 +19,13 @@ public class TodoListRepositoryImpl implements TodoListRepository {
         String sql = "INSERT INTO todolist(todo) VALUES (?)";
 
         try(Connection connection = dataSource.getConnection()) {
-            PreparedStatement statement = connection.prepareStatement(sql);
-
+            PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, todolist.getTodo());
             statement.executeUpdate();
         } catch (SQLException exception) {
             throw new RuntimeException(exception);
         }
         return todolist;
-    }
-
-    @Override
-    public Todolist findById(Integer id) {
-//        for (Todolist todolist : todolistData) {
-//            if (todolist.getId().equals(id)) {
-//                return todolist;
-//            }
-//        }
-        throw new InputMismatchException("Todolist dengan nomor " + id + " tidak ditemukan!");
     }
 
     private boolean isExist(Integer id) {
@@ -79,19 +67,39 @@ public class TodoListRepositoryImpl implements TodoListRepository {
     @Override
     public List<Todolist> findAll() {
         String sql = "SELECT id, todo FROM todolist";
-        try(Connection connection = dataSource.getConnection();
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(sql)) {
 
-            List<Todolist> todolists = new ArrayList<>();
-            while (resultSet.next()) {
-                Todolist todolist = new Todolist();
-                todolist.setId(resultSet.getInt("id"));
-                todolist.setTodo(resultSet.getString("todo"));
+        try (Connection connection = dataSource.getConnection();
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(sql)) {
 
-                todolists.add(todolist);
-            }
-            return todolists;
+            Iterator<Todolist> iterator = new Iterator<>() {
+                @Override
+                public boolean hasNext() {
+                    try {
+                        return resultSet.next();
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+
+                @Override
+                public Todolist next() {
+                    try {
+                        Todolist todolist = new Todolist();
+                        todolist.setId(resultSet.getInt("id"));
+                        todolist.setTodo(resultSet.getString("todo"));
+                        return todolist;
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            };
+
+            return StreamSupport.stream(
+                    Spliterators.spliteratorUnknownSize(iterator, Spliterator.ORDERED),
+                    false
+            ).toList();
+
         } catch (SQLException exception) {
             throw new RuntimeException(exception);
         }
