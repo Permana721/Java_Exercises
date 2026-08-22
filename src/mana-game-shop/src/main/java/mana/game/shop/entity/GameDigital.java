@@ -1,4 +1,5 @@
 package mana.game.shop.entity;
 
-public class GameDigital {
+public class GameDigital extends Game {
+
 }
