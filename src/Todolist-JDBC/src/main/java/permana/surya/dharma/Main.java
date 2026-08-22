@@ -10,7 +10,7 @@ import permana.surya.dharma.view.TodoListView;
 import javax.sql.DataSource;
 
 public class Main {
-    static void main(String[] args) {
+    public static void main(String[] args) {
         DataSource dataSource = DatabaseUtil.getDataSource();
         TodoListRepository todoListRepository = new TodoListRepositoryImpl(dataSource);
         TodoListService todoListService = new TodoListServiceImpl(todoListRepository);
