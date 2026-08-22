@@ -3,19 +3,12 @@ package permana.surya.dharma.entity;
 public class Todolist {
     private String todo;
     private Integer id;
-    private static int counter = 1;
 
     public Todolist() {
-        setId(increaseID());
     }
 
     public Todolist(String todo) {
         this.todo = todo;
-        setId(increaseID());
-    }
-
-    public static int increaseID() {
-        return counter++;
     }
 
     public String getTodo() {
