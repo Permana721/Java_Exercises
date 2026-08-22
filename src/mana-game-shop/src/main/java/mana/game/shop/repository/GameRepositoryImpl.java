@@ -1,4 +1,5 @@
 package mana.game.shop.repository;
 
-public class GameRepositoryImpl {
+public class GameRepositoryImpl implements GameRepository {
+
 }
