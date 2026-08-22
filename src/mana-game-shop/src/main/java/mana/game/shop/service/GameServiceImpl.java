@@ -1,4 +1,5 @@
 package mana.game.shop.service;
 
-public class GameServiceImpl {
+public class GameServiceImpl implements GameService {
+
 }
